@@ -24,7 +24,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    bat "docker run --name tetris ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
+                    bat "docker run -e DISPLAY=host.docker.internal:0 --name tetris ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
                 }
             }
         }
