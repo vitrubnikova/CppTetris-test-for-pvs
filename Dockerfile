@@ -9,7 +9,7 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
     xauth \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/DQNEO/CppTetris.git /app
+RUN git clone https://github.com/vitrubnikova/CppTetris-test-for-pvs.git /app
 
 # Проверка установки Wine
 RUN wine64 --version
