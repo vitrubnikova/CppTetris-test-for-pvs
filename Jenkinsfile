@@ -1,17 +1,30 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE_NAME = "tetris"
+        DOCKER_TAG = "latest"
+    }
+
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/vitrubnikova/CppTetris-test-for-pvs.git'
+                git 'https://github.com/vitrubnikova/CppTetris-test-for-pvs.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("tetris:${env.BUILD_ID}")
+                    bat "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_TAG} ."
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    bat "docker run --name tetris ${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
                 }
             }
         }
