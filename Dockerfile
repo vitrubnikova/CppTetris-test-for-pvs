@@ -6,9 +6,7 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
     libncurses5-dev \
     mingw-w64 \
     wine64 \
-    xvfb \
     xauth \
-    x11-xserver-utils \
     && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/DQNEO/CppTetris.git /app
