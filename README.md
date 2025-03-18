@@ -1,39 +1,31 @@
-ニコニコ動画「テトリスを1時間強で作ってみた【実況解説】」のソースコード
+# Инструкция по сборке и запуску Docker-образа 
 
-オリジナル動画：http://www.nicovideo.jp/watch/sm8517855
+**Предустановки**
 
-![画面キャプチャ](https://raw.github.com/DQNEO/CppTetris/master/capture.png "画面キャプチャ")
+- [Docker](https://docs.docker.com/engine/install/)
+- [Xming X Server for Windows](https://sourceforge.net/projects/xming/)
+- установить переменную окружения `set DISPLAY=localhost:0` (через Windows PowerShell)
+- запущен Xming X Server for Windows
+- открыто приложение Docker Desktop либо терминал с установленным Docker Engine (если через терминал - тогда можно начинать с шага 2)
 
-コミットログの"30:00" "40:00"みたいな数字は、動画内の経過時間です。
+**Шаги**
 
+1. Клик на "*Terminal*" в правом нижнем углу
+2. Выполнить команду `docker build -t tetris .`
+3. Выполнить команду `docker run -it --rm -e DISPLAY=host.docker.internal:0 --name tetris tetris`
 
-遊び方
---------------------------
-tetris.exeを実行するとすぐに遊ぶことができます。
+# Как запустить Jenkins и выполнить pipeline
 
+**Предустановки**
 
+- [Jenkins](https://www.jenkins.io/doc/book/installing/) (следовать инструкции)
+- запущен Docker
+- запущен Xming X Server for Windows
 
+**Шаги**
 
-ソースコードをコンパイルする方法
---------------------------
-基本的に動画のとおりです。
-
-* MinGWをインストール
-* Pathを通す
-* コンパイル(make.batを実行)
-* a.exeを実行
-
-
-
-ライセンスについて
---------------------------
-
-MIT License
-
-Copyright @tkihira
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Thanks to
-https://twitter.com/tkihira/status/262437799775592449
-
+1. Открыть браузер
+2. В адресную строку ввести *localhost* (указать порт, который был настроен при установке)
+3. Ховер на имя нужного пайплайна
+4. Клик на появившийся значок выпадающего списка
+5. Клик на кнопку "*Собрать сейчас*"
