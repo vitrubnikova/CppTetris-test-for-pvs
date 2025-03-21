@@ -33,15 +33,16 @@ pipeline {
     post {
         success {
             emailext (
-                subject: 'SUCCESS: Job ${env.JOB_NAME}',
+                subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: 'Build успешно завершен!',
                 to: 'vitrubnikova@gmail.com'
             )
         }
         failure {
             emailext (
-                subject: 'FAILURE: Job ${env.JOB_NAME}',
-                body: 'Build завершился с ошибкой!',
+                subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: """<p>Build завершился с ошибкой! Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
                 to: 'vitrubnikova@gmail.com'
             )
         }
